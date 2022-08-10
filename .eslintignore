@@ -1,0 +1,5 @@
+# 告诉 ESLint 去忽略特定的文件和目录
+node_modules/*
+dist/*
+package.json
+README.md
