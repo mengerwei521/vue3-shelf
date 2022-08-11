@@ -7,6 +7,7 @@ export default {
     menuList: [],//侧边栏导航列表
     breadCrumbList: [],//面包屑列表
     cachedRouteList: [],//缓存路由
+    isSidebarStatus: true,//侧边栏收起与展开， false 收起 true展开
   },
   mutations: {
 
@@ -34,8 +35,11 @@ export default {
       if (route.meta.notCache) {
         state.cachedRouteList.push(route.name)
       }
-
-    }
+    },
+    //侧边栏收起与展开
+    getSidebarStatus(state, status) {
+      state.isSidebarStatus = status;
+    },
   },
   actions: {},
   getters: {}

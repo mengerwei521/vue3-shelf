@@ -10,7 +10,7 @@
 				@click="jumpEvent"
 				:class="['drop-menu-a', { select: isSelect }]"
 			>
-				<common-icon v-if="icon" :iconClass="icon" :iconSize="25" />
+				<common-icon v-if="icon" :iconClass="icon" :iconSize="20" />
 			</a>
 		</Tooltip>
 	</div>

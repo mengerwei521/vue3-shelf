@@ -1,7 +1,7 @@
 <template>
 	<div class="layout function_flex">
 		<Layout class="main function_flex">
-			<side-bar :collapsed="collapsed" />
+			<side-bar />
 			<Layout class="function_flex">
 				<header-bar />
 				<Content class="content function_flex">
@@ -24,37 +24,43 @@ export default {
 		HeaderBar,
 	},
 	data() {
-		return {
-			collapsed: true, //侧边栏是否展示
-		};
+		return {};
 	},
 	watch: {
 		$route(newRoute) {
-			console.log(newRoute, 'newRoutenewRoute');
 			this.setBreadCrumb(newRoute);
 			this.addTags();
 		},
 	},
 	mounted() {
 		this.setBreadCrumb(this.$route);
-		const that = this;
+		this.getDocumentWidth();
+
 		window.onresize = () => {
-			if (document.body.clientWidth <= 960) {
-				that.collapsed = false;
-			} else {
-				that.collapsed = true;
-			}
+			this.getDocumentWidth();
 		};
 	},
 	methods: {
-		...mapMutations(['setBreadCrumb', 'getCachedRoute']),
+		...mapMutations([
+			'setBreadCrumb',
+			'getCachedRoute',
+			'getSidebarStatus',
+		]),
+		//记录缓存路由
 		addTags() {
 			const { name } = this.$route;
-			console.log(name, 'sssssssssssssssssssss');
 			if (name) {
 				this.getCachedRoute(this.$route);
 			}
 			return false;
+		},
+		//获取窗口高度
+		getDocumentWidth() {
+			if (document.body.clientWidth <= 960) {
+				this.getSidebarStatus(false);
+			} else {
+				this.getSidebarStatus(true);
+			}
 		},
 	},
 };

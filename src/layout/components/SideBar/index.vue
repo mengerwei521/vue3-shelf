@@ -1,7 +1,8 @@
 <template>
 	<div class="side-menu">
 		<div class="logo"></div>
-		<div class="open" v-show="collapsed">
+
+		<div class="open" v-show="isSidebarStatus">
 			<Menu
 				ref="menu"
 				theme="dark"
@@ -17,7 +18,7 @@
 				/>
 			</Menu>
 		</div>
-		<div class="put-away" v-show="!collapsed">
+		<div class="put-away" v-show="!isSidebarStatus">
 			<template v-for="route in menuList">
 				<collapsed-menu
 					v-if="route.children && route.children.length > 1"
@@ -48,20 +49,16 @@ export default {
 	data() {
 		return {};
 	},
-	props: {
-		collapsed: {
-			type: Boolean,
-			default: false,
-		},
-	},
 	components: {
 		SideMenuItem,
 		CollapsedMenu,
 		ContentTop,
 	},
+
 	computed: {
 		...mapState({
 			menuList: (state) => state.app.menuList,
+			isSidebarStatus: (state) => state.app.isSidebarStatus,
 		}),
 	},
 	methods: {

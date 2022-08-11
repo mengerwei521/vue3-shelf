@@ -10,7 +10,7 @@
 				:class="['drop-menu-a', { select: isSelect }]"
 				type="text"
 				@mouseover="handleMousemove($event, routeItem)"
-				><common-icon v-show="icon" :iconClass="icon" :iconSize="25" />
+				><common-icon v-show="icon" :iconClass="icon" :iconSize="20" />
 			</a>
 		</DropdownItem>
 		<DropdownItem v-if="!hideTitle" class="zi">
