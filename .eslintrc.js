@@ -8,7 +8,7 @@ module.exports = {
 		node: true, //node.js 全局变量和 node.js作用域
 	},
 	//启用推荐规则
-	extends: ['plugin:vue/essential', 'plugin:prettier/recommended', '@vue/prettier', 'prettier'],
+	extends: ['plugin:vue/vue3-essential', 'plugin:prettier/recommended', '@vue/prettier', 'prettier'],
 	//向ESLint规则中添加全局变量
 	globals: {
 		__dirname: false,

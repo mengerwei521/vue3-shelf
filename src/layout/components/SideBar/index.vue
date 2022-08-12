@@ -1,8 +1,9 @@
 <template>
 	<div class="side-menu">
-		<div class="logo"></div>
-
 		<div class="open" v-show="isSidebarStatus">
+			<div class="logo">
+				<img src="../../../assets/logo.jpg" class="sidebar-logo" />
+			</div>
 			<Menu
 				ref="menu"
 				theme="dark"
@@ -19,22 +20,27 @@
 			</Menu>
 		</div>
 		<div class="put-away" v-show="!isSidebarStatus">
-			<template v-for="route in menuList">
-				<collapsed-menu
-					v-if="route.children && route.children.length > 1"
-					@on-click="handleSelect"
-					:hideTitle="true"
-					:key="route.name"
-					:routeItem="route"
-				></collapsed-menu>
-				<content-top
-					v-else
-					@on-click="handleSelect"
-					:key="route.name"
-					:routeItem="route"
-				>
-				</content-top>
-			</template>
+			<div class="logo">
+				<img src="../../../assets/logo-min.jpg" class="sidebar-logo" />
+			</div>
+			<div class="put-away-content">
+				<template v-for="route in menuList">
+					<collapsed-menu
+						v-if="route.children && route.children.length > 1"
+						@on-click="handleSelect"
+						:hideTitle="true"
+						:key="route.name"
+						:routeItem="route"
+					></collapsed-menu>
+					<content-top
+						v-else
+						@on-click="handleSelect"
+						:key="route.name"
+						:routeItem="route"
+					>
+					</content-top>
+				</template>
+			</div>
 		</div>
 	</div>
 </template>
@@ -90,6 +96,12 @@ export default {
 		height: 50px;
 		flex-shrink: 0;
 		background-color: #304156;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		img {
+			height: 85%;
+		}
 	}
 	.open {
 		width: 200px;
@@ -120,14 +132,20 @@ export default {
 		height: 100%;
 		background: #fff;
 		width: 60px;
-		overflow-x: hidden;
-		overflow-y: scroll;
-		scrollbar-width: none; /* firefox */
-		-ms-overflow-style: none; /* IE 10+ */
-		background-color: #304156;
-	}
-	.put-away::-webkit-scrollbar {
-		display: none; /* Chrome Safari */
+		overflow: hidden;
+		.put-away-content {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			overflow-x: hidden;
+			overflow-y: scroll;
+			scrollbar-width: none; /* firefox */
+			-ms-overflow-style: none; /* IE 10+ */
+			background-color: #304156;
+		}
+		.put-away-content::-webkit-scrollbar {
+			display: none; /* Chrome Safari */
+		}
 	}
 }
 </style>
