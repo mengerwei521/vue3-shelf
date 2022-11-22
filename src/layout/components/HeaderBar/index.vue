@@ -1,11 +1,6 @@
 <template>
 	<div class="header-bar">
-		<Icons
-			@click="clickSwitch"
-			class="svg-icon"
-			:type="iconName"
-			:size="30"
-		/>
+		<Icons @click="clickSwitch" class="svg-icon" :type="iconName" :size="30" />
 		<bread-crumb />
 		<user />
 	</div>
@@ -34,6 +29,8 @@ export default {
 			immediate: true,
 			deep: true,
 			handler(newValue, oldValue) {
+				if (1 == 1) {
+				}
 				this.iconName = newValue == true ? 'put-away' : 'open';
 			},
 		},
@@ -48,10 +45,7 @@ export default {
 		...mapMutations(['getSidebarStatus']),
 		//点击切换
 		clickSwitch() {
-			console.log(
-				this.iconName,
-				'this.iconName this.iconName this.iconName '
-			);
+			console.log(this.iconName, 'this.iconName this.iconName this.iconName ');
 			if (this.iconName == 'put-away') {
 				this.iconName = 'open';
 				this.getSidebarStatus(false);
