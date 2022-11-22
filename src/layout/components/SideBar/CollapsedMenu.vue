@@ -27,7 +27,7 @@
 			</a>
 		</DropdownItem>
 		<template #list>
-			<DropdownMenu ref="dropdown" slot="list">
+			<DropdownMenu ref="dropdown">
 				<template v-for="child in routeItem.children">
 					<collapsed-menu
 						v-if="showChildren(child)"

@@ -57,15 +57,34 @@
       "parser": "babel-eslint"
     },
     "rules": {},
-    "overrides": [{
-      "files": [
-        "**/__tests__/*.{j,t}s?(x)",
-        "**/tests/unit/**/*.spec.{j,t}s?(x)"
-      ],
-      "env": {
-        "jest": true
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "jest": true
+        }
       }
-    }]
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --config ./.prettierrc.js --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.vue": [
+      "prettier --config ./.prettierrc.js --write",
+      "eslint --fix",
+      "git add"
+    ]
   },
   "browserslist": [
     "> 1%",
@@ -77,5 +96,17 @@
     "transform": {
       "^.+\\.vue$": "vue-jest"
     }
-  }
+  },
+  "description": "## Project setup ``` npm install ```",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mengerwei521/vue3-shelf.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mengerwei521/vue3-shelf/issues"
+  },
+  "homepage": "https://github.com/mengerwei521/vue3-shelf#readme"
 }

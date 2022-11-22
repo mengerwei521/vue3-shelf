@@ -1,9 +1,12 @@
 <template>
-	<div class="side-menu">
-		<div class="open" v-show="isSidebarStatus">
-			<div class="logo">
-				<img src="../../../assets/logo.jpg" class="sidebar-logo" />
-			</div>
+	<div
+		:class="[
+			isSidebarStatus ? 'open-side-bar' : 'hidden-side-bar',
+			'side-menu',
+		]"
+	>
+		<Logo />
+		<div class="open side-bar-item" v-show="isSidebarStatus">
 			<Menu
 				ref="menu"
 				theme="dark"
@@ -19,11 +22,8 @@
 				/>
 			</Menu>
 		</div>
-		<div class="put-away" v-show="!isSidebarStatus">
-			<div class="logo">
-				<img src="../../../assets/logo-min.jpg" class="sidebar-logo" />
-			</div>
-			<div class="put-away-content">
+		<div class="hidden side-bar-item" v-show="!isSidebarStatus">
+			<div class="hidden-content">
 				<template v-for="route in menuList">
 					<collapsed-menu
 						v-if="route.children && route.children.length > 1"
@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import Logo from './Logo';
 import SideMenuItem from './SideMenuItem';
 import CollapsedMenu from './CollapsedMenu';
 import ContentTop from './ContentTop';
@@ -56,6 +57,7 @@ export default {
 		return {};
 	},
 	components: {
+		Logo,
 		SideMenuItem,
 		CollapsedMenu,
 		ContentTop,
@@ -92,31 +94,19 @@ export default {
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
-	.logo {
-		height: 50px;
-		flex-shrink: 0;
-		background-color: #304156;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		img {
-			height: 85%;
-		}
-	}
-	.open {
-		width: 200px;
+	.side-bar-item {
 		display: flex;
 		flex-direction: column;
 		height: 100%;
 		overflow: hidden;
+	}
+	.open {
 		/deep/.ivu-menu {
 			display: flex;
 			flex-direction: column;
 			height: 100%;
 			overflow-x: hidden;
 			overflow-y: scroll;
-			scrollbar-width: none; /* firefox */
-			-ms-overflow-style: none; /* IE 10+ */
 			background-color: #304156;
 		}
 		/deep/.ivu-menu::-webkit-scrollbar {
@@ -126,26 +116,27 @@ export default {
 			display: none;
 		}
 	}
-	.put-away {
-		display: flex;
-		flex-direction: column;
-		height: 100%;
+	.hidden {
 		background: #fff;
-		width: 60px;
-		overflow: hidden;
-		.put-away-content {
+		.hidden-content {
 			display: flex;
 			flex-direction: column;
 			height: 100%;
 			overflow-x: hidden;
 			overflow-y: scroll;
-			scrollbar-width: none; /* firefox */
-			-ms-overflow-style: none; /* IE 10+ */
 			background-color: #304156;
 		}
-		.put-away-content::-webkit-scrollbar {
+		.hidden-content::-webkit-scrollbar {
 			display: none; /* Chrome Safari */
 		}
 	}
+}
+.open-side-bar {
+	width: 200px;
+	transition: width 0.28s;
+}
+.hidden-side-bar {
+	width: 60px;
+	transition: width 0.28s;
 }
 </style>

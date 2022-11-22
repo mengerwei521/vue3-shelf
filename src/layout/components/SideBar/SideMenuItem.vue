@@ -2,29 +2,17 @@
 	<div class="side-menu-item">
 		<template v-if="hasOneShowingChild(routeItem)">
 			<MenuItem :name="getNameOrHref(routeObj)" class="dan">
-				<item
-					:icon="routeObj.icon"
-					:title="showTitle(routeObj)"
-					:badge_num="routeObj.badge_num"
-				/>
+				<item :icon="routeObj.icon" :title="showTitle(routeObj)" :badge_num="routeObj.badge_num" />
 			</MenuItem>
 		</template>
 		<template v-else>
 			<Submenu :name="getNameOrHref(routeItem)" class="duo">
 				<template #title>
-					<item
-						:icon="routeItem.icon"
-						:title="showTitle(routeItem)"
-						:badge_num="badge_num"
-					/>
+					<item :icon="routeItem.icon" :title="showTitle(routeItem)" :badge_num="badge_num" />
 					<div v-if="noReading" class="no-reading"></div>
 				</template>
 
-				<side-menu-item
-					v-for="child in routeItem.children"
-					:key="child.name"
-					:routeItem="child"
-				/>
+				<side-menu-item v-for="child in routeItem.children" :key="child.name" :routeItem="child" />
 			</Submenu>
 		</template>
 	</div>
@@ -73,10 +61,6 @@ export default {
 
 <style lang="less" scoped>
 .side-menu-item {
-	.dan {
-	}
-	.duo {
-	}
 	/deep/.ivu-menu-opened {
 		.ivu-menu-submenu-title {
 			background-color: #304156 !important;
