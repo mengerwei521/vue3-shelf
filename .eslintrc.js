@@ -25,11 +25,11 @@ module.exports = {
 	rules: {
 		'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off', //禁止使用控制台
 		'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off', //禁止使用调试器
-		'quotes': 'off', //强制一致使用反引号，双引号或单引号
+		quotes: 'off', //强制一致使用反引号，双引号或单引号
 		'no-empty': 'off', //禁止空块语句
 		'space-before-function-paren': 'off', //在函数定义左括号之前加强一致的间距
-		'eqeqeq': 'off', //需要使用===和！==
-		'semi': 'off', //在语句结尾需要分号
+		eqeqeq: 'error', //需要使用===和！==
+		semi: 'off', //在语句结尾需要分号
 		'no-tabs': 'off', //允许使用 tab 字符，包括在注释内
 		'spaced-comment': 'off', //在注释中的//或/ *之后强制执行一致的间距
 		'no-unused-vars': ['error', { args: 'none' }], //任何地方声明和不使用的变量很可能是由于重构不完全导致的错误
@@ -39,6 +39,6 @@ module.exports = {
 		'prettier/prettier': 'off',
 		'vue/multi-word-component-names': 'off',
 		'vue/comment-directive': 'off',
-		'vue/no-template-key': 'off'
+		'vue/no-template-key': 'off',
 	},
 };
