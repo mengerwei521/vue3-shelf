@@ -27,6 +27,7 @@ module.exports = {
 		'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off', //禁止使用调试器
 		quotes: 'off', //强制一致使用反引号，双引号或单引号
 		'no-empty': 'off', //禁止空块语句
+
 		'space-before-function-paren': 'off', //在函数定义左括号之前加强一致的间距
 		eqeqeq: 'error', //需要使用===和！==
 		semi: 'off', //在语句结尾需要分号
