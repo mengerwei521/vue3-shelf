@@ -8,7 +8,9 @@
     "prod": "vue-cli-service serve --mode prod",
     "build": "vue-cli-service build --mode build",
     "build-dev": "vue-cli-service build --mode build-dev",
-    "build-test": "vue-cli-service build --mode build-test"
+    "build-test": "vue-cli-service build --mode build-test",
+    "lint": "vue-cli-service lint",
+    "lint-fix": "eslint src/**/*.*  --fix"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -57,17 +59,15 @@
       "parser": "babel-eslint"
     },
     "rules": {},
-    "overrides": [
-      {
-        "files": [
-          "**/__tests__/*.{j,t}s?(x)",
-          "**/tests/unit/**/*.spec.{j,t}s?(x)"
-        ],
-        "env": {
-          "jest": true
-        }
+    "overrides": [{
+      "files": [
+        "**/__tests__/*.{j,t}s?(x)",
+        "**/tests/unit/**/*.spec.{j,t}s?(x)"
+      ],
+      "env": {
+        "jest": true
       }
-    ]
+    }]
   },
   "husky": {
     "hooks": {
