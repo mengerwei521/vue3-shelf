@@ -4,9 +4,7 @@
 			<side-bar />
 			<Layout class="function_flex">
 				<header-bar />
-				<Content class="content function_flex">
-					<router-view
-				/></Content>
+				<Content class="content function_flex"> <router-view /></Content>
 				<Footer class="footer-bar">&copy; 凯德尼医疗科技</Footer>
 			</Layout>
 		</Layout>
@@ -41,11 +39,7 @@ export default {
 		};
 	},
 	methods: {
-		...mapMutations([
-			'setBreadCrumb',
-			'getCachedRoute',
-			'getSidebarStatus',
-		]),
+		...mapMutations(['setBreadCrumb', 'getCachedRoute', 'getSidebarStatus']),
 		//记录缓存路由
 		addTags() {
 			const { name } = this.$route;
@@ -72,6 +66,7 @@ export default {
 	flex-direction: unset;
 	.content {
 		margin: 15px;
+		padding: 10px;
 		border-radius: 5px;
 		background-color: #ffff;
 	}

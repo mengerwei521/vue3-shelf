@@ -1,5 +1,5 @@
 <template>
-	<div class="doc-list">医生列表</div>
+	<div class="doctor-details">医生详情</div>
 </template>
 
 <script>

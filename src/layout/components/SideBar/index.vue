@@ -1,25 +1,9 @@
 <template>
-	<div
-		:class="[
-			isSidebarStatus ? 'open-side-bar' : 'hidden-side-bar',
-			'side-menu',
-		]"
-	>
+	<div :class="[isSidebarStatus ? 'open-side-bar' : 'hidden-side-bar', 'side-menu']">
 		<Logo />
 		<div class="open side-bar-item" v-show="isSidebarStatus">
-			<Menu
-				ref="menu"
-				theme="dark"
-				:active-name="$route.name"
-				width="auto"
-				@on-select="handleSelect"
-				accordion
-			>
-				<side-menu-item
-					v-for="route in menuList"
-					:key="route.name"
-					:routeItem="route"
-				/>
+			<Menu ref="menu" theme="dark" :active-name="$route.name" width="auto" @on-select="handleSelect" accordion>
+				<side-menu-item v-for="route in menuList" :key="route.name" :routeItem="route" />
 			</Menu>
 		</div>
 		<div class="hidden side-bar-item" v-show="!isSidebarStatus">
@@ -32,13 +16,7 @@
 						:key="route.name"
 						:routeItem="route"
 					></collapsed-menu>
-					<content-top
-						v-else
-						@on-click="handleSelect"
-						:key="route.name"
-						:routeItem="route"
-					>
-					</content-top>
+					<content-top v-else @on-click="handleSelect" :key="route.name" :routeItem="route"> </content-top>
 				</template>
 			</div>
 		</div>
@@ -70,12 +48,10 @@ export default {
 		}),
 	},
 	methods: {
+		//菜单栏跳转
 		handleSelect(name) {
 			if (name == undefined) return;
-			if (
-				name.indexOf('https://') !== -1 ||
-				name.indexOf('http://') !== -1
-			) {
+			if (name.indexOf('https://') !== -1 || name.indexOf('http://') !== -1) {
 				window.open(name);
 			} else {
 				this.$router.push({

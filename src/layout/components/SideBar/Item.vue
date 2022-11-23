@@ -14,14 +14,17 @@ export default {
 		CommonIcon,
 	},
 	props: {
+		//图标
 		icon: {
 			type: String,
 			default: '',
 		},
+		//路由标题
 		title: {
 			type: String,
 			default: '',
 		},
+		// 未读数
 		badge_num: {
 			type: Number,
 			default: 0,

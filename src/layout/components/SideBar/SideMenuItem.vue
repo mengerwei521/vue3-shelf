@@ -9,7 +9,6 @@
 			<Submenu :name="getNameOrHref(routeItem)" class="duo">
 				<template #title>
 					<item :icon="routeItem.icon" :title="showTitle(routeItem)" :badge_num="badge_num" />
-					<div v-if="noReading" class="no-reading"></div>
 				</template>
 
 				<side-menu-item v-for="child in routeItem.children" :key="child.name" :routeItem="child" />
@@ -32,7 +31,6 @@ export default {
 	data() {
 		return {
 			badge_num: 0,
-			noReading: false,
 		};
 	},
 	components: {
